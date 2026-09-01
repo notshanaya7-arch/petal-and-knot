@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Owner Dashboard | Petal & Knot</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fffaf8;
+    color:#574247;
+    font-family:"DM Sans",sans-serif;
+}
+
+/* TOP BAR */
+
+.topbar{
+    background:white;
+    border-bottom:1px solid #f0dedb;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    font-weight:700;
+    color:#965e6a;
+}
+
+.back{
+    text-decoration:none;
+    color:#965e6a;
+    border:1px solid #dfc3c6;
+    padding:9px 17px;
+    border-radius:25px;
+    font-size:12px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    max-width:1250px;
+    margin:auto;
+    padding:55px 6%;
+}
+
+.heading{
+    margin-bottom:35px;
+}
+
+.small{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    color:#ad6b77;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.heading h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:60px;
+    color:#503d42;
+}
+
+.heading p{
+    color:#80696d;
+    margin-top:8px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:35px;
+}
+
+.stat{
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:20px;
+    padding:25px;
+}
+
+.stat-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:40px;
+    color:#a76673;
+}
+
+.stat-label{
+    color:#80696d;
+    font-size:12px;
+}
+
+/* ORDER */
+
+.order-section{
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:22px;
+    overflow:hidden;
+}
+
+.order-header{
+    padding:25px 28px;
+    border-bottom:1px solid #f0dedb;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.order-header h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
+}
+
+.order-id{
+    background:#f8e9e9;
+    color:#965e6a;
+    padding:8px 13px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+}
+
+.order-content{
+    padding:28px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.info-box{
+    background:#fffaf8;
+    border-radius:16px;
+    padding:20px;
+}
+
+.info-box h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+    margin-bottom:12px;
+}
+
+.info-box p{
+    font-size:13px;
+    line-height:1.8;
+    color:#766166;
+}
+
+.info-box strong{
+    color:#574247;
+}
+
+/* PRODUCTS */
+
+.products{
+    margin-top:25px;
+}
+
+.products h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.product-row{
+    display:flex;
+    justify-content:space-between;
+    padding:13px 0;
+    border-bottom:1px solid #f0e2df;
+    font-size:13px;
+}
+
+.product-row:last-child{
+    border-bottom:none;
+}
+
+.product-price{
+    font-weight:600;
+    color:#a76673;
+}
+
+/* MESSAGE */
+
+.message{
+    margin-top:25px;
+    padding:22px;
+    background:#f8e9e9;
+    border-radius:18px;
+}
+
+.message h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.message p{
+    font-size:13px;
+    line-height:1.8;
+    color:#70595e;
+}
+
+/* TOTAL */
+
+.total{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid #ead8d7;
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:600;
+}
+
+.total span:last-child{
+    color:#a76673;
+}
+
+/* BUTTONS */
+
+.actions{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
+}
+
+.button{
+    border:none;
+    padding:13px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:12px;
+}
+
+.print{
+    background:#a76673;
+    color:white;
+}
+
+.clear{
+    background:#f4e3e5;
+    color:#965e6a;
+}
+
+/* NO ORDER */
+
+.no-order{
+    text-align:center;
+    padding:70px 20px;
+}
+
+.no-order h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.no-order p{
+    color:#80696d;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .heading h1{
+        font-size:48px;
+    }
+
+    .order-header{
+        align-items:flex-start;
+        gap:15px;
+        flex-direction:column;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+    <div class="logo">
+        Petal & Knot
+    </div>
+
+    <a href="index.html" class="back">
+        View Store
+    </a>
+
+</header>
+
+
+<main class="dashboard">
+
+    <div class="heading">
+
+        <div class="small">
+            Private shop area
+        </div>
+
+        <h1>
+            Order Dashboard
+        </h1>
+
+        <p>
+            Keep track of your latest customer order.
+        </p>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-number" id="orderCount">
+                0
+            </div>
+
+            <div class="stat-label">
+                Latest orders
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number" id="itemCount">
+                0
+            </div>
+
+            <div class="stat-label">
+                Items in latest order
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number" id="orderTotal">
+                ₹0
+            </div>
+
+            <div class="stat-label">
+                Latest order total
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ORDER -->
+
+    <section class="order-section" id="orderSection">
+
+        <div class="no-order">
+
+            <h2>
+                No orders yet.
+            </h2>
+
+            <p>
+                Customer orders will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* GET SAVED ORDER */
+
+const order =
+    JSON.parse(localStorage.getItem("lastOrder"));
+
+
+/* DISPLAY ORDER */
+
+function displayOrder(){
+
+    if(!order){
+
+        return;
+
+    }
+
+
+    const items =
+        order.items || [];
+
+
+    const subtotal =
+        items.reduce(
+            (sum,item) => sum + item.price,
+            0
+        );
+
+
+    const delivery =
+        subtotal >= 999 ? 0 : 49;
+
+
+    const total =
+        subtotal + delivery;
+
+
+    document.getElementById("orderCount")
+        .textContent = "1";
+
+
+    document.getElementById("itemCount")
+        .textContent = items.length;
+
+
+    document.getElementById("orderTotal")
+        .textContent = "₹" + total;
+
+
+    let productsHTML = "";
+
+
+    items.forEach(item => {
+
+        productsHTML += `
+
+            <div class="product-row">
+
+                <span>
+                    ${item.name}
+                </span>
+
+                <span class="product-price">
+                    ₹${item.price}
+                </span>
+
+            </div>
+
+        `;
+
+    });
+
+
+    const message =
+        order.message && order.message.trim()
+        ? order.message
+        : "No special instructions were added.";
+
+
+    document.getElementById("orderSection").innerHTML = `
+
+        <div class="order-header">
+
+            <h2>
+                New customer order
+            </h2>
+
+            <div class="order-id">
+                ${order.orderId}
+            </div>
+
+        </div>
+
+
+        <div class="order-content">
+
+
+            <div class="info-grid">
+
+
+                <div class="info-box">
+
+                    <h3>
+                        Customer
+                    </h3>
+
+                    <p>
+                        <strong>
+                            ${order.firstName} ${order.lastName}
+                        </strong>
+                    </p>
+
+                    <p>
+                        ${order.phone}
+                    </p>
+
+                    <p>
+                        ${order.email || "No email provided"}
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        Delivery
+                    </h3>
+
+                    <p>
+                        ${order.address}
+                    </p>
+
+                    <p>
+                        ${order.city},
+                        ${order.state}
+                    </p>
+
+                    <p>
+                        ${order.pincode}
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        Payment
+                    </h3>
+
+                    <p>
+                        ${
+                            order.payment === "online"
+                            ? "Online Payment"
+                            : "Cash on Delivery"
+                        }
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        Order number
+                    </h3>
+
+                    <p>
+                        ${order.orderId}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="products">
+
+                <h3>
+                    Products
+                </h3>
+
+                ${productsHTML}
+
+            </div>
+
+
+            <div class="message">
+
+                <h3>
+                    Message for the owner
+                </h3>
+
+                <p>
+                    ${message}
+                </p>
+
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    Order Total
+                </span>
+
+                <span>
+                    ₹${total}
+                </span>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                class="button print"
+                onclick="window.print()">
+
+                    Print Order
+
+                </button>
+
+
+                <button
+                class="button clear"
+                onclick="clearOrder()">
+
+                    Clear Demo Order
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* CLEAR ORDER */
+
+function clearOrder(){
+
+    localStorage.removeItem("lastOrder");
+
+    location.reload();
+
+}
+
+
+displayOrder();
+
+</script>
+
+</body>
+</html>
