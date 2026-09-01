@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@ a{
     color:inherit;
 }
 
-/* NAVIGATION */
+/* NAV */
 
 nav{
     position:sticky;
@@ -39,9 +40,7 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(255,250,248,.96);
-    backdrop-filter:blur(15px);
-
+    background:rgba(255,250,248,.97);
     border-bottom:1px solid #f0dddd;
 }
 
@@ -59,33 +58,25 @@ nav{
     font-size:14px;
 }
 
-.nav-links a{
-    transition:.3s;
-}
-
 .nav-links a:hover{
     color:#c27684;
 }
 
-.cart-button{
+.cart{
     background:#a76673;
     color:white;
-
     padding:11px 19px;
-
     border-radius:30px;
-
     font-size:13px;
 }
 
 
-/* PRODUCT AREA */
+/* MAIN */
 
-.product-area{
+.product-page{
     max-width:1200px;
     margin:auto;
-
-    padding:70px 7% 100px;
+    padding:55px 7% 100px;
 }
 
 
@@ -94,7 +85,6 @@ nav{
 .breadcrumb{
     font-size:12px;
     color:#927b7f;
-
     margin-bottom:35px;
 }
 
@@ -103,63 +93,44 @@ nav{
 }
 
 
-/* PRODUCT GRID */
+/* PRODUCT */
 
 .product-grid{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
+    gap:65px;
     align-items:start;
 }
 
 
 /* IMAGE */
 
-.image-box{
-    background:#f7e9e7;
-
-    border-radius:28px;
-
-    overflow:hidden;
-
+.product-image{
     position:relative;
+    background:#f7e9e7;
+    border-radius:28px;
+    overflow:hidden;
 }
 
-.image-box img{
+.product-image img{
     width:100%;
-    height:560px;
-
+    height:570px;
     object-fit:cover;
-
     display:block;
-
-    transition:.5s;
 }
 
-.image-box:hover img{
-    transform:scale(1.03);
-}
-
-.handmade-badge{
+.badge{
     position:absolute;
-
     top:20px;
     left:20px;
 
     background:white;
+    color:#965e6a;
 
-    padding:10px 15px;
-
+    padding:10px 16px;
     border-radius:30px;
 
     font-size:11px;
-
-    color:#965e6a;
-
-    box-shadow:0 5px 20px rgba(80,50,50,.08);
 }
 
 
@@ -167,229 +138,182 @@ nav{
 
 .category{
     text-transform:uppercase;
-
     letter-spacing:3px;
-
     font-size:11px;
-
     color:#ad6b77;
-
     margin-bottom:12px;
 }
 
-.product-title{
+h1{
     font-family:"Cormorant Garamond",serif;
-
-    font-size:58px;
-
+    font-size:60px;
     line-height:1;
-
     color:#503d42;
-
     margin-bottom:15px;
 }
 
 .rating{
     color:#a76673;
-
     font-size:13px;
-
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .price{
     font-size:25px;
-
     font-weight:600;
-
     color:#965e6a;
-
-    margin-bottom:25px;
+    margin-bottom:22px;
 }
 
 .description{
-    font-size:14px;
-
-    line-height:1.9;
-
     color:#78656a;
-
-    margin-bottom:30px;
+    font-size:14px;
+    line-height:1.9;
+    margin-bottom:25px;
 }
 
 
-/* FEATURES */
+/* INFO BOXES */
 
 .features{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
-    gap:12px;
-
-    margin-bottom:30px;
+    gap:10px;
+    margin-bottom:28px;
 }
 
 .feature{
-    background:#fff;
-
+    background:white;
     border:1px solid #f0dedb;
-
-    padding:14px;
-
     border-radius:14px;
-
+    padding:13px;
     font-size:12px;
-
-    color:#70595e;
 }
 
 
 /* OPTIONS */
 
-.option-title{
-    font-size:12px;
-
-    font-weight:600;
-
-    margin-bottom:10px;
+.option-section{
+    margin-top:24px;
 }
+
+.option-title{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+
+/* COLORS */
 
 .colors{
     display:flex;
-
-    gap:10px;
-
-    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:9px;
 }
 
-.color{
+.color-btn{
     border:1px solid #dfc3c6;
-
     background:white;
 
-    padding:9px 15px;
+    color:#70595e;
 
-    border-radius:20px;
+    padding:10px 17px;
+    border-radius:25px;
 
     cursor:pointer;
 
     font-family:inherit;
-
     font-size:12px;
-
-    color:#70595e;
 }
 
-.color.selected{
+.color-btn:hover{
+    border-color:#a76673;
+}
+
+.color-btn.selected{
     background:#a76673;
-
     color:white;
-
     border-color:#a76673;
 }
 
 
 /* QUANTITY */
 
-.quantity-area{
+.quantity-box{
     display:flex;
-
     align-items:center;
-
-    gap:15px;
-
-    margin-bottom:20px;
-}
-
-.quantity{
-    display:flex;
-
-    align-items:center;
+    width:max-content;
 
     border:1px solid #dfc3c6;
-
     border-radius:25px;
-
     overflow:hidden;
 
     background:white;
 }
 
-.quantity button{
+.quantity-box button{
     border:none;
-
     background:white;
 
-    width:38px;
-    height:38px;
+    width:42px;
+    height:40px;
 
     cursor:pointer;
 
-    font-size:17px;
-
+    font-size:18px;
     color:#965e6a;
 }
 
-.quantity span{
-    width:35px;
+.quantity-box button:hover{
+    background:#f8e9e9;
+}
 
+.quantity-number{
+    width:40px;
     text-align:center;
-
     font-size:13px;
+    font-weight:600;
 }
 
 
 /* CUSTOM MESSAGE */
 
-.message-label{
-    display:block;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    margin-bottom:8px;
-}
-
 textarea{
     width:100%;
+    min-height:110px;
 
-    min-height:100px;
+    border:1px solid #e4cccc;
+    border-radius:15px;
+
+    background:white;
+
+    padding:14px;
 
     resize:vertical;
 
-    border:1px solid #e4cccc;
-
-    border-radius:15px;
-
-    padding:13px;
-
-    background:#fff;
-
     font-family:inherit;
-
     font-size:13px;
 
     outline:none;
-
-    margin-bottom:18px;
 }
 
 textarea:focus{
-    border-color:#b87582;
+    border-color:#a76673;
 }
 
 
 /* ADD TO CART */
 
-.add-button{
+.add-cart{
     width:100%;
+
+    margin-top:22px;
 
     border:none;
 
     background:#a76673;
-
     color:white;
 
     padding:17px;
@@ -397,25 +321,44 @@ textarea:focus{
     border-radius:30px;
 
     font-family:inherit;
-
     font-size:14px;
+    font-weight:600;
 
     cursor:pointer;
 
     transition:.3s;
 }
 
-.add-button:hover{
+.add-cart:hover{
     background:#8f5662;
-
     transform:translateY(-2px);
 }
 
 
-/* DELIVERY INFO */
+/* SUCCESS */
+
+.success{
+    display:none;
+
+    margin-top:14px;
+
+    background:#e9f4e8;
+    color:#557053;
+
+    padding:13px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    font-size:12px;
+}
+
+
+/* DELIVERY */
 
 .delivery{
-    margin-top:20px;
+    margin-top:18px;
 
     padding:17px;
 
@@ -431,76 +374,41 @@ textarea:focus{
 }
 
 
-/* SUCCESS MESSAGE */
-
-.success{
-    display:none;
-
-    background:#e9f4e8;
-
-    color:#557053;
-
-    padding:15px;
-
-    border-radius:14px;
-
-    margin-top:15px;
-
-    text-align:center;
-
-    font-size:13px;
-}
-
-
 /* RELATED */
 
 .related{
     margin-top:100px;
 }
 
-.related-heading{
+.related-title{
     text-align:center;
-
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
-.related-heading p{
+.related-title p{
     text-transform:uppercase;
-
     letter-spacing:3px;
-
     font-size:10px;
-
     color:#ad6b77;
-
-    margin-bottom:8px;
 }
 
-.related-heading h2{
+.related-title h2{
     font-family:"Cormorant Garamond",serif;
-
     font-size:45px;
-
     color:#503d42;
 }
 
 .related-grid{
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:20px;
 }
 
 .related-card{
     background:white;
-
     border:1px solid #f0dedb;
-
     border-radius:20px;
-
     overflow:hidden;
-
     transition:.3s;
 }
 
@@ -510,9 +418,7 @@ textarea:focus{
 
 .related-card img{
     width:100%;
-
-    height:250px;
-
+    height:240px;
     object-fit:cover;
 }
 
@@ -522,16 +428,13 @@ textarea:focus{
 
 .related-info h3{
     font-family:"Cormorant Garamond",serif;
-
     font-size:25px;
-
-    margin-bottom:5px;
 }
 
 .related-info p{
     color:#a76673;
-
     font-size:13px;
+    margin-top:5px;
 }
 
 
@@ -539,48 +442,35 @@ textarea:focus{
 
 footer{
     background:#503d42;
-
     color:white;
-
     padding:60px 7% 25px;
 }
 
 .footer-grid{
     display:grid;
-
     grid-template-columns:2fr 1fr 1fr;
-
     gap:50px;
-
     margin-bottom:40px;
 }
 
 footer h3{
     font-family:"Cormorant Garamond",serif;
-
     font-size:30px;
-
     margin-bottom:15px;
 }
 
 footer p,
 footer a{
     color:#ddc9ca;
-
     font-size:13px;
-
     line-height:2;
 }
 
 .bottom{
     border-top:1px solid rgba(255,255,255,.15);
-
     padding-top:20px;
-
     text-align:center;
-
     color:#cdb8bb;
-
     font-size:11px;
 }
 
@@ -595,16 +485,15 @@ footer a{
 
     .product-grid{
         grid-template-columns:1fr;
-
         gap:40px;
     }
 
-    .product-title{
-        font-size:50px;
+    .product-image img{
+        height:450px;
     }
 
-    .image-box img{
-        height:450px;
+    h1{
+        font-size:50px;
     }
 
     .related-grid{
@@ -618,7 +507,7 @@ footer a{
 
 @media(max-width:550px){
 
-    .product-area{
+    .product-page{
         padding-left:5%;
         padding-right:5%;
     }
@@ -627,13 +516,13 @@ footer a{
         grid-template-columns:1fr;
     }
 
-    .product-title{
+    h1{
         font-size:44px;
     }
-
 }
 </style>
 </head>
+
 
 <body>
 
@@ -650,45 +539,35 @@ footer a{
     <ul class="nav-links">
 
         <li>
-            <a href="index.html">
-                Home
-            </a>
+            <a href="index.html">Home</a>
         </li>
 
         <li>
-            <a href="shop.html">
-                Shop
-            </a>
+            <a href="shop.html">Shop</a>
         </li>
 
         <li>
-            <a href="bouquet.html">
-                Build a Bouquet
-            </a>
+            <a href="bouquet.html">Build a Bouquet</a>
         </li>
 
         <li>
-            <a href="about.html">
-                About
-            </a>
+            <a href="about.html">About</a>
         </li>
 
     </ul>
 
 
-    <a href="cart.html" class="cart-button">
-
+    <a href="cart.html" class="cart">
         Cart (<span id="cartCount">0</span>)
-
     </a>
 
 </nav>
 
 
 
-<!-- PRODUCT -->
+<!-- PRODUCT PAGE -->
 
-<main class="product-area">
+<main class="product-page">
 
 
     <div class="breadcrumb">
@@ -696,10 +575,6 @@ footer a{
         <a href="shop.html">
             Shop
         </a>
-
-        &nbsp; / &nbsp;
-
-        Crochet Flowers
 
         &nbsp; / &nbsp;
 
@@ -716,9 +591,9 @@ footer a{
 
         <!-- IMAGE -->
 
-        <div class="image-box">
+        <div class="product-image">
 
-            <span class="handmade-badge">
+            <span class="badge">
                 Handmade with love
             </span>
 
@@ -735,18 +610,13 @@ footer a{
 
         <section>
 
-
             <div class="category">
                 Crochet Collection
             </div>
 
 
-            <h1
-            class="product-title"
-            id="productName">
-
+            <h1 id="productName">
                 Pastel Crochet Bouquet
-
             </h1>
 
 
@@ -755,25 +625,19 @@ footer a{
             </div>
 
 
-            <div
-            class="price"
-            id="productPrice">
-
+            <div class="price" id="productPrice">
                 ₹799
-
             </div>
 
 
             <p class="description">
 
-                A soft little bouquet of handmade crochet
-                flowers, carefully stitched to last much
-                longer than fresh blooms. Perfect for
-                birthdays, room decor, gifts or simply
-                making someone's day a little sweeter.
+                A beautiful handmade crochet bouquet
+                carefully stitched to last. Perfect for
+                birthdays, gifts, room decor or simply
+                making someone's day special.
 
             </p>
-
 
 
             <!-- FEATURES -->
@@ -799,38 +663,48 @@ footer a{
             </div>
 
 
+            <!-- COLOURS -->
 
-            <!-- COLORS -->
+            <div class="option-section">
 
-            <div class="option-title">
-                Choose a colour
-            </div>
+                <span class="option-title">
+                    Available colours
+                </span>
 
-            <div class="colors">
 
-                <button
-                class="color selected"
-                onclick="selectColor(this)">
-                    Pastel
-                </button>
+                <div class="colors">
 
-                <button
-                class="color"
-                onclick="selectColor(this)">
-                    Pink
-                </button>
+                    <button
+                    class="color-btn selected"
+                    onclick="chooseColor(this)">
+                        Pastel
+                    </button>
 
-                <button
-                class="color"
-                onclick="selectColor(this)">
-                    White
-                </button>
+                    <button
+                    class="color-btn"
+                    onclick="chooseColor(this)">
+                        Pink
+                    </button>
 
-                <button
-                class="color"
-                onclick="selectColor(this)">
-                    Custom
-                </button>
+                    <button
+                    class="color-btn"
+                    onclick="chooseColor(this)">
+                        White
+                    </button>
+
+                    <button
+                    class="color-btn"
+                    onclick="chooseColor(this)">
+                        Yellow
+                    </button>
+
+                    <button
+                    class="color-btn"
+                    onclick="chooseColor(this)">
+                        Custom
+                    </button>
+
+                </div>
 
             </div>
 
@@ -838,19 +712,22 @@ footer a{
 
             <!-- QUANTITY -->
 
-            <div class="quantity-area">
+            <div class="option-section">
 
-                <div class="option-title">
+                <span class="option-title">
                     Quantity
-                </div>
+                </span>
 
-                <div class="quantity">
+
+                <div class="quantity-box">
 
                     <button onclick="changeQuantity(-1)">
                         −
                     </button>
 
-                    <span id="quantity">
+                    <span
+                    class="quantity-number"
+                    id="quantity">
                         1
                     </span>
 
@@ -864,28 +741,31 @@ footer a{
 
 
 
-            <!-- MESSAGE -->
+            <!-- CUSTOM MESSAGE -->
 
-            <label
-            class="message-label"
-            for="customMessage">
+            <div class="option-section">
 
-                Customisation / message for the owner
+                <label
+                class="option-title"
+                for="customMessage">
 
-            </label>
+                    Customisation / message for the owner
 
-
-            <textarea
-            id="customMessage"
-            placeholder="Example: I'd love pink flowers with a little white bow...">
-            </textarea>
+                </label>
 
 
+                <textarea
+                id="customMessage"
+                placeholder="Tell the maker what you'd like. For example: pink flowers, white ribbon, birthday message..."></textarea>
 
-            <!-- ADD -->
+            </div>
+
+
+
+            <!-- ADD TO CART -->
 
             <button
-            class="add-button"
+            class="add-cart"
             onclick="addToCart()">
 
                 Add to Cart
@@ -895,12 +775,11 @@ footer a{
 
             <div
             class="success"
-            id="successMessage">
+            id="success">
 
                 Added to your cart.
 
             </div>
-
 
 
             <!-- DELIVERY -->
@@ -908,17 +787,16 @@ footer a{
             <div class="delivery">
 
                 <strong>
-                    Handmade order information
+                    Handmade order
                 </strong>
 
                 <br>
 
-                Each piece is made by hand, so please
-                allow a little time for your order to be
-                prepared. Custom designs may take longer.
+                Every piece is handmade with care.
+                Custom orders may need extra preparation
+                time.
 
             </div>
-
 
         </section>
 
@@ -930,7 +808,7 @@ footer a{
 
     <section class="related">
 
-        <div class="related-heading">
+        <div class="related-title">
 
             <p>
                 You might also love
@@ -952,12 +830,12 @@ footer a{
 
                 <img
                 src="https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg"
-                alt="Crochet daisy keychain">
+                alt="Flower Keychain">
 
                 <div class="related-info">
 
                     <h3>
-                        Daisy Keychain
+                        Flower Keychain
                     </h3>
 
                     <p>
@@ -976,7 +854,7 @@ footer a{
 
                 <img
                 src="https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png"
-                alt="Crochet roses">
+                alt="Crochet Rose Set">
 
                 <div class="related-info">
 
@@ -985,7 +863,7 @@ footer a{
                     </h3>
 
                     <p>
-                        ₹599
+                        ₹499
                     </p>
 
                 </div>
@@ -1000,7 +878,7 @@ footer a{
 
                 <img
                 src="https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
-                alt="Crochet flower bundle">
+                alt="Mini Flower Bundle">
 
                 <div class="related-info">
 
@@ -1021,7 +899,6 @@ footer a{
 
     </section>
 
-
 </main>
 
 
@@ -1031,7 +908,6 @@ footer a{
 <footer>
 
     <div class="footer-grid">
-
 
         <div>
 
@@ -1054,15 +930,11 @@ footer a{
             </h3>
 
             <p>
-                <a href="index.html">
-                    Home
-                </a>
+                <a href="index.html">Home</a>
             </p>
 
             <p>
-                <a href="shop.html">
-                    Shop
-                </a>
+                <a href="shop.html">Shop</a>
             </p>
 
             <p>
@@ -1090,14 +962,11 @@ footer a{
 
         </div>
 
-
     </div>
 
 
     <div class="bottom">
-
         © 2026 Petal & Knot · Handmade with care.
-
     </div>
 
 </footer>
@@ -1110,60 +979,40 @@ footer a{
 
 const products = {
 
-    bouquet: {
-
+    bouquet:{
         name:"Pastel Crochet Bouquet",
-
         price:799,
-
         image:"https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
-
     },
 
-
-    daisy: {
-
-        name:"Daisy Keychain",
-
+    daisy:{
+        name:"Flower Keychain",
         price:249,
-
         image:"https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg"
-
     },
 
-
-    rose: {
-
+    rose:{
         name:"Crochet Rose Set",
-
-        price:599,
-
+        price:499,
         image:"https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png"
-
     },
 
-
-    bundle: {
-
+    bundle:{
         name:"Mini Flower Bundle",
-
         price:399,
-
         image:"https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
-
     }
 
 };
 
 
-/* GET PRODUCT FROM URL */
+/* GET PRODUCT */
 
-const params =
+const urlParams =
     new URLSearchParams(window.location.search);
 
 const productKey =
-    params.get("product") || "bouquet";
-
+    urlParams.get("product") || "bouquet";
 
 const product =
     products[productKey] || products.bouquet;
@@ -1209,17 +1058,20 @@ updateCartCount();
 let quantity = 1;
 
 
-function changeQuantity(change){
+function changeQuantity(amount){
 
-    quantity += change;
+    quantity += amount;
+
 
     if(quantity < 1){
         quantity = 1;
     }
 
+
     if(quantity > 10){
         quantity = 10;
     }
+
 
     document.getElementById("quantity")
         .textContent = quantity;
@@ -1227,20 +1079,24 @@ function changeQuantity(change){
 }
 
 
-/* COLOR */
+/* COLOUR */
 
 let selectedColor = "Pastel";
 
 
-function selectColor(button){
+function chooseColor(button){
 
     document
-        .querySelectorAll(".color")
-        .forEach(btn =>
-            btn.classList.remove("selected")
-        );
+        .querySelectorAll(".color-btn")
+        .forEach(function(btn){
+
+            btn.classList.remove("selected");
+
+        });
+
 
     button.classList.add("selected");
+
 
     selectedColor =
         button.textContent.trim();
@@ -1258,7 +1114,7 @@ function addToCart(){
         ) || [];
 
 
-    const customMessage =
+    const message =
         document.getElementById("customMessage")
         .value.trim();
 
@@ -1275,7 +1131,7 @@ function addToCart(){
 
             color:selectedColor,
 
-            message:customMessage
+            message:message
 
         });
 
@@ -1288,21 +1144,27 @@ function addToCart(){
     );
 
 
+    /* ALSO SAVE MESSAGE */
+
+    localStorage.setItem(
+        "ownerMessage",
+        message
+    );
+
+
     updateCartCount();
 
 
-    const success =
-        document.getElementById("successMessage");
+    document.getElementById("success")
+        .style.display = "block";
 
 
-    success.style.display = "block";
+    setTimeout(function(){
 
+        document.getElementById("success")
+            .style.display = "none";
 
-    setTimeout(() => {
-
-        success.style.display = "none";
-
-    },3000);
+    },2500);
 
 }
 
@@ -1310,3 +1172,5 @@ function addToCart(){
 
 </body>
 </html>
+```
+
