@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Cart | Petal & Knot</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fffaf8;
+    color:#574247;
+    font-family:"DM Sans",sans-serif;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* NAV */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,250,248,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #f0dddd;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    font-weight:700;
+    color:#965e6a;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    font-size:14px;
+}
+
+.nav-links a{
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#c27684;
+}
+
+.cart-button{
+    background:#a76673;
+    color:white;
+    padding:11px 19px;
+    border-radius:30px;
+    font-size:13px;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:85px 7% 55px;
+    background:
+        radial-gradient(circle at 15% 30%,#f7e0e4,transparent 25%),
+        radial-gradient(circle at 85% 70%,#eee3f2,transparent 25%);
+}
+
+.small{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    color:#ad6b77;
+    font-size:11px;
+    margin-bottom:15px;
+}
+
+.header h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:68px;
+    color:#503d42;
+}
+
+/* CART */
+
+.cart-area{
+    padding:60px 7% 100px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.cart-layout{
+    display:grid;
+    grid-template-columns:1.6fr .8fr;
+    gap:40px;
+}
+
+.cart-items{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:110px 1fr auto;
+    gap:20px;
+    align-items:center;
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:20px;
+    padding:15px;
+}
+
+.cart-item img{
+    width:110px;
+    height:110px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.item-info h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.item-info p{
+    color:#897276;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.item-price{
+    color:#a76673;
+    font-weight:600;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:12px;
+}
+
+.quantity button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background:#f4e3e5;
+    color:#965e6a;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.remove{
+    border:none;
+    background:none;
+    color:#a76673;
+    cursor:pointer;
+    font-size:12px;
+    margin-top:10px;
+}
+
+.item-total{
+    font-weight:600;
+    color:#574247;
+}
+
+/* SUMMARY */
+
+.summary{
+    background:#fff;
+    border:1px solid #f0dedb;
+    border-radius:22px;
+    padding:30px;
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.summary h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    font-size:14px;
+    color:#765f64;
+}
+
+.summary-total{
+    border-top:1px solid #ead8d7;
+    padding-top:18px;
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:600;
+    color:#503d42;
+}
+
+.message-label{
+    display:block;
+    margin-top:25px;
+    margin-bottom:8px;
+    font-size:13px;
+    font-weight:600;
+}
+
+textarea{
+    width:100%;
+    min-height:100px;
+    border:1px solid #e4cccc;
+    border-radius:14px;
+    padding:13px;
+    resize:vertical;
+    font-family:inherit;
+    outline:none;
+    background:#fffaf8;
+}
+
+textarea:focus{
+    border-color:#b87582;
+}
+
+.checkout{
+    display:block;
+    width:100%;
+    border:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:30px;
+    background:#a76673;
+    color:white;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:14px;
+    transition:.3s;
+}
+
+.checkout:hover{
+    background:#8f5662;
+    transform:translateY(-2px);
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:80px 20px;
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:22px;
+}
+
+.empty h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.empty p{
+    color:#80696d;
+    margin-bottom:25px;
+}
+
+.shop-button{
+    display:inline-block;
+    background:#a76673;
+    color:white;
+    padding:13px 23px;
+    border-radius:30px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#503d42;
+    color:white;
+    padding:60px 7% 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:50px;
+    margin-bottom:40px;
+}
+
+footer h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#ddc9ca;
+    font-size:13px;
+    line-height:2;
+}
+
+footer a:hover{
+    color:white;
+}
+
+.bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:20px;
+    text-align:center;
+    color:#cdb8bb;
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+    .summary{
+        position:static;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:52px;
+    }
+
+    .cart-area{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .cart-item{
+        grid-template-columns:80px 1fr;
+    }
+
+    .cart-item img{
+        width:80px;
+        height:80px;
+    }
+
+    .item-total{
+        grid-column:2;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        Petal & Knot
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="shop.html">Shop</a>
+        </li>
+
+        <li>
+            <a href="bouquet.html">Build a Bouquet</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+    </ul>
+
+    <a href="cart.html" class="cart-button">
+        Cart (<span id="cartCount">0</span>)
+    </a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="small">
+        Your little collection
+    </div>
+
+    <h1>
+        Your Cart
+    </h1>
+
+</header>
+
+
+<!-- CART AREA -->
+
+<main class="cart-area">
+
+    <div id="cartContainer"></div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>
+                Petal & Knot
+            </h3>
+
+            <p>
+                Handmade crochet flowers, tiny keepsakes
+                and thoughtful gifts made with care.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                <a href="index.html">Home</a>
+            </p>
+
+            <p>
+                <a href="shop.html">Shop</a>
+            </p>
+
+            <p>
+                <a href="bouquet.html">Build a Bouquet</a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Say hello
+            </h3>
+
+            <p>
+                Instagram: @petalandknot.co
+            </p>
+
+            <p>
+                hello@petalandknot.demo
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        © 2026 Petal & Knot · Handmade with care.
+    </div>
+
+</footer>
+
+
+<script>
+
+let cart =
+    JSON.parse(localStorage.getItem("petalCart")) || [];
+
+
+/* PRODUCT IMAGES */
+
+const productImages = {
+
+    "Pastel Crochet Bouquet":
+    "https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp",
+
+    "Daisy Keychain":
+    "https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg",
+
+    "Crochet Rose Set":
+    "https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png",
+
+    "Mini Flower Bundle":
+    "https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp",
+
+    "Custom Bouquet":
+    "https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp",
+
+    "Tiny Flower Charm":
+    "https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg",
+
+    "Soft Bloom":
+    "https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png",
+
+    "Sweetheart Bundle":
+    "https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
+
+};
+
+
+/* RENDER CART */
+
+function renderCart(){
+
+    const container =
+        document.getElementById("cartContainer");
+
+    const count =
+        document.getElementById("cartCount");
+
+    count.textContent = cart.length;
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Your cart is feeling a little empty.
+                </h2>
+
+                <p>
+                    Let's find something handmade for you.
+                </p>
+
+                <a href="shop.html" class="shop-button">
+                    Browse the shop
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    let subtotal = 0;
+
+
+    let itemsHTML = "";
+
+
+    cart.forEach((item,index)=>{
+
+        subtotal += item.price;
+
+
+        itemsHTML += `
+
+            <div class="cart-item">
+
+                <img
+                src="${productImages[item.name] || ''}"
+                alt="${item.name}"
+                >
+
+                <div class="item-info">
+
+                    <h2>
+                        ${item.name}
+                    </h2>
+
+                    <p>
+                        Handmade crochet creation
+                    </p>
+
+                    <div class="item-price">
+                        ₹${item.price}
+                    </div>
+
+                    <button
+                    class="remove"
+                    onclick="removeItem(${index})">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+                <div class="item-total">
+                    ₹${item.price}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    const delivery =
+        subtotal >= 999 ? 0 : 49;
+
+    const total =
+        subtotal + delivery;
+
+
+    container.innerHTML = `
+
+        <div class="cart-layout">
+
+            <div class="cart-items">
+
+                ${itemsHTML}
+
+            </div>
+
+
+            <div class="summary">
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span>
+                        ₹${subtotal}
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <span>
+                        ${delivery === 0 ? "FREE" : "₹" + delivery}
+                    </span>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                        ₹${total}
+                    </span>
+
+                </div>
+
+
+                <label class="message-label">
+                    Message for the owner
+                </label>
+
+                <textarea
+                id="ownerMessage"
+                placeholder="Want a different color, custom size, special note or anything else? Tell us here..."
+                ></textarea>
+
+
+                <button
+                class="checkout"
+                onclick="goToCheckout()">
+
+                    Continue to checkout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem(
+        "petalCart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+
+}
+
+
+/* CHECKOUT */
+
+function goToCheckout(){
+
+    const message =
+        document.getElementById("ownerMessage").value;
+
+    localStorage.setItem(
+        "ownerMessage",
+        message
+    );
+
+    window.location.href =
+        "checkout.html";
+
+}
+
+
+renderCart();
+
+</script>
+
+</body>
+</html>
