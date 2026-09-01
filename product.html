@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product | Petal & Knot</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fffaf8;
+    color:#574247;
+    font-family:"DM Sans",sans-serif;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* NAVIGATION */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    padding:18px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(255,250,248,.96);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #f0dddd;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    font-weight:700;
+    color:#965e6a;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    font-size:14px;
+}
+
+.nav-links a{
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#c27684;
+}
+
+.cart-button{
+    background:#a76673;
+    color:white;
+
+    padding:11px 19px;
+
+    border-radius:30px;
+
+    font-size:13px;
+}
+
+
+/* PRODUCT AREA */
+
+.product-area{
+    max-width:1200px;
+    margin:auto;
+
+    padding:70px 7% 100px;
+}
+
+
+/* BREADCRUMB */
+
+.breadcrumb{
+    font-size:12px;
+    color:#927b7f;
+
+    margin-bottom:35px;
+}
+
+.breadcrumb a{
+    color:#a76673;
+}
+
+
+/* PRODUCT GRID */
+
+.product-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:start;
+}
+
+
+/* IMAGE */
+
+.image-box{
+    background:#f7e9e7;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.image-box img{
+    width:100%;
+    height:560px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.5s;
+}
+
+.image-box:hover img{
+    transform:scale(1.03);
+}
+
+.handmade-badge{
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    background:white;
+
+    padding:10px 15px;
+
+    border-radius:30px;
+
+    font-size:11px;
+
+    color:#965e6a;
+
+    box-shadow:0 5px 20px rgba(80,50,50,.08);
+}
+
+
+/* DETAILS */
+
+.category{
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:11px;
+
+    color:#ad6b77;
+
+    margin-bottom:12px;
+}
+
+.product-title{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:58px;
+
+    line-height:1;
+
+    color:#503d42;
+
+    margin-bottom:15px;
+}
+
+.rating{
+    color:#a76673;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+}
+
+.price{
+    font-size:25px;
+
+    font-weight:600;
+
+    color:#965e6a;
+
+    margin-bottom:25px;
+}
+
+.description{
+    font-size:14px;
+
+    line-height:1.9;
+
+    color:#78656a;
+
+    margin-bottom:30px;
+}
+
+
+/* FEATURES */
+
+.features{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-bottom:30px;
+}
+
+.feature{
+    background:#fff;
+
+    border:1px solid #f0dedb;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    font-size:12px;
+
+    color:#70595e;
+}
+
+
+/* OPTIONS */
+
+.option-title{
+    font-size:12px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+}
+
+.colors{
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:25px;
+}
+
+.color{
+    border:1px solid #dfc3c6;
+
+    background:white;
+
+    padding:9px 15px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    color:#70595e;
+}
+
+.color.selected{
+    background:#a76673;
+
+    color:white;
+
+    border-color:#a76673;
+}
+
+
+/* QUANTITY */
+
+.quantity-area{
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+}
+
+.quantity{
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #dfc3c6;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:white;
+}
+
+.quantity button{
+    border:none;
+
+    background:white;
+
+    width:38px;
+    height:38px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    color:#965e6a;
+}
+
+.quantity span{
+    width:35px;
+
+    text-align:center;
+
+    font-size:13px;
+}
+
+
+/* CUSTOM MESSAGE */
+
+.message-label{
+    display:block;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+}
+
+textarea{
+    width:100%;
+
+    min-height:100px;
+
+    resize:vertical;
+
+    border:1px solid #e4cccc;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    background:#fff;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    outline:none;
+
+    margin-bottom:18px;
+}
+
+textarea:focus{
+    border-color:#b87582;
+}
+
+
+/* ADD TO CART */
+
+.add-button{
+    width:100%;
+
+    border:none;
+
+    background:#a76673;
+
+    color:white;
+
+    padding:17px;
+
+    border-radius:30px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.add-button:hover{
+    background:#8f5662;
+
+    transform:translateY(-2px);
+}
+
+
+/* DELIVERY INFO */
+
+.delivery{
+    margin-top:20px;
+
+    padding:17px;
+
+    background:#f8e9e9;
+
+    border-radius:15px;
+
+    font-size:12px;
+
+    line-height:1.8;
+
+    color:#70595e;
+}
+
+
+/* SUCCESS MESSAGE */
+
+.success{
+    display:none;
+
+    background:#e9f4e8;
+
+    color:#557053;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-size:13px;
+}
+
+
+/* RELATED */
+
+.related{
+    margin-top:100px;
+}
+
+.related-heading{
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.related-heading p{
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:10px;
+
+    color:#ad6b77;
+
+    margin-bottom:8px;
+}
+
+.related-heading h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:45px;
+
+    color:#503d42;
+}
+
+.related-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.related-card{
+    background:white;
+
+    border:1px solid #f0dedb;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.related-card:hover{
+    transform:translateY(-5px);
+}
+
+.related-card img{
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+}
+
+.related-info{
+    padding:18px;
+}
+
+.related-info h3{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    margin-bottom:5px;
+}
+
+.related-info p{
+    color:#a76673;
+
+    font-size:13px;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#503d42;
+
+    color:white;
+
+    padding:60px 7% 25px;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:50px;
+
+    margin-bottom:40px;
+}
+
+footer h3{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#ddc9ca;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+.bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding-top:20px;
+
+    text-align:center;
+
+    color:#cdb8bb;
+
+    font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .product-title{
+        font-size:50px;
+    }
+
+    .image-box img{
+        height:450px;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .product-area{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .product-title{
+        font-size:44px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        Petal & Knot
+    </a>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="shop.html">
+                Shop
+            </a>
+        </li>
+
+        <li>
+            <a href="bouquet.html">
+                Build a Bouquet
+            </a>
+        </li>
+
+        <li>
+            <a href="about.html">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+
+    <a href="cart.html" class="cart-button">
+
+        Cart (<span id="cartCount">0</span>)
+
+    </a>
+
+</nav>
+
+
+
+<!-- PRODUCT -->
+
+<main class="product-area">
+
+
+    <div class="breadcrumb">
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        &nbsp; / &nbsp;
+
+        Crochet Flowers
+
+        &nbsp; / &nbsp;
+
+        <span id="breadcrumbName">
+            Pastel Crochet Bouquet
+        </span>
+
+    </div>
+
+
+
+    <div class="product-grid">
+
+
+        <!-- IMAGE -->
+
+        <div class="image-box">
+
+            <span class="handmade-badge">
+                Handmade with love
+            </span>
+
+            <img
+            id="productImage"
+            src="https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
+            alt="Crochet flower bouquet">
+
+        </div>
+
+
+
+        <!-- DETAILS -->
+
+        <section>
+
+
+            <div class="category">
+                Crochet Collection
+            </div>
+
+
+            <h1
+            class="product-title"
+            id="productName">
+
+                Pastel Crochet Bouquet
+
+            </h1>
+
+
+            <div class="rating">
+                ★★★★★ &nbsp; 4.9 · 28 reviews
+            </div>
+
+
+            <div
+            class="price"
+            id="productPrice">
+
+                ₹799
+
+            </div>
+
+
+            <p class="description">
+
+                A soft little bouquet of handmade crochet
+                flowers, carefully stitched to last much
+                longer than fresh blooms. Perfect for
+                birthdays, room decor, gifts or simply
+                making someone's day a little sweeter.
+
+            </p>
+
+
+
+            <!-- FEATURES -->
+
+            <div class="features">
+
+                <div class="feature">
+                    Handmade
+                </div>
+
+                <div class="feature">
+                    Long-lasting
+                </div>
+
+                <div class="feature">
+                    Gift-ready
+                </div>
+
+                <div class="feature">
+                    Made to order
+                </div>
+
+            </div>
+
+
+
+            <!-- COLORS -->
+
+            <div class="option-title">
+                Choose a colour
+            </div>
+
+            <div class="colors">
+
+                <button
+                class="color selected"
+                onclick="selectColor(this)">
+                    Pastel
+                </button>
+
+                <button
+                class="color"
+                onclick="selectColor(this)">
+                    Pink
+                </button>
+
+                <button
+                class="color"
+                onclick="selectColor(this)">
+                    White
+                </button>
+
+                <button
+                class="color"
+                onclick="selectColor(this)">
+                    Custom
+                </button>
+
+            </div>
+
+
+
+            <!-- QUANTITY -->
+
+            <div class="quantity-area">
+
+                <div class="option-title">
+                    Quantity
+                </div>
+
+                <div class="quantity">
+
+                    <button onclick="changeQuantity(-1)">
+                        −
+                    </button>
+
+                    <span id="quantity">
+                        1
+                    </span>
+
+                    <button onclick="changeQuantity(1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <label
+            class="message-label"
+            for="customMessage">
+
+                Customisation / message for the owner
+
+            </label>
+
+
+            <textarea
+            id="customMessage"
+            placeholder="Example: I'd love pink flowers with a little white bow...">
+            </textarea>
+
+
+
+            <!-- ADD -->
+
+            <button
+            class="add-button"
+            onclick="addToCart()">
+
+                Add to Cart
+
+            </button>
+
+
+            <div
+            class="success"
+            id="successMessage">
+
+                Added to your cart.
+
+            </div>
+
+
+
+            <!-- DELIVERY -->
+
+            <div class="delivery">
+
+                <strong>
+                    Handmade order information
+                </strong>
+
+                <br>
+
+                Each piece is made by hand, so please
+                allow a little time for your order to be
+                prepared. Custom designs may take longer.
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+
+    <!-- RELATED PRODUCTS -->
+
+    <section class="related">
+
+        <div class="related-heading">
+
+            <p>
+                You might also love
+            </p>
+
+            <h2>
+                More little blooms
+            </h2>
+
+        </div>
+
+
+        <div class="related-grid">
+
+
+            <a
+            href="product.html?product=daisy"
+            class="related-card">
+
+                <img
+                src="https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg"
+                alt="Crochet daisy keychain">
+
+                <div class="related-info">
+
+                    <h3>
+                        Daisy Keychain
+                    </h3>
+
+                    <p>
+                        ₹249
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+            href="product.html?product=rose"
+            class="related-card">
+
+                <img
+                src="https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png"
+                alt="Crochet roses">
+
+                <div class="related-info">
+
+                    <h3>
+                        Crochet Rose Set
+                    </h3>
+
+                    <p>
+                        ₹599
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+            href="product.html?product=bundle"
+            class="related-card">
+
+                <img
+                src="https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
+                alt="Crochet flower bundle">
+
+                <div class="related-info">
+
+                    <h3>
+                        Mini Flower Bundle
+                    </h3>
+
+                    <p>
+                        ₹399
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <h3>
+                Petal & Knot
+            </h3>
+
+            <p>
+                Handmade crochet flowers, tiny keepsakes
+                and thoughtful gifts made with care.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                <a href="index.html">
+                    Home
+                </a>
+            </p>
+
+            <p>
+                <a href="shop.html">
+                    Shop
+                </a>
+            </p>
+
+            <p>
+                <a href="bouquet.html">
+                    Build a Bouquet
+                </a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Say hello
+            </h3>
+
+            <p>
+                Instagram: @petalandknot.co
+            </p>
+
+            <p>
+                hello@petalandknot.demo
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="bottom">
+
+        © 2026 Petal & Knot · Handmade with care.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* PRODUCT DATA */
+
+const products = {
+
+    bouquet: {
+
+        name:"Pastel Crochet Bouquet",
+
+        price:799,
+
+        image:"https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
+
+    },
+
+
+    daisy: {
+
+        name:"Daisy Keychain",
+
+        price:249,
+
+        image:"https://i.etsystatic.com/39839409/r/il/605051/5790300090/il_600x600.5790300090_buzu.jpg"
+
+    },
+
+
+    rose: {
+
+        name:"Crochet Rose Set",
+
+        price:599,
+
+        image:"https://i.pinimg.com/originals/8a/75/8b/8a758baccded91123cabd9111b9760b8.png"
+
+    },
+
+
+    bundle: {
+
+        name:"Mini Flower Bundle",
+
+        price:399,
+
+        image:"https://image.made-in-china.com/365f3j00GBSCUrsabAcR/Wholesale-Knitting-Flower-Crochet-Bouquet-Manufacturer-Finished-Crochet-Large-Bouquets-of-All-Types.webp"
+
+    }
+
+};
+
+
+/* GET PRODUCT FROM URL */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const productKey =
+    params.get("product") || "bouquet";
+
+
+const product =
+    products[productKey] || products.bouquet;
+
+
+/* DISPLAY PRODUCT */
+
+document.getElementById("productName")
+    .textContent = product.name;
+
+document.getElementById("productPrice")
+    .textContent = "₹" + product.price;
+
+document.getElementById("productImage")
+    .src = product.image;
+
+document.getElementById("productImage")
+    .alt = product.name;
+
+document.getElementById("breadcrumbName")
+    .textContent = product.name;
+
+
+/* CART COUNT */
+
+function updateCartCount(){
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem("petalCart")
+        ) || [];
+
+    document.getElementById("cartCount")
+        .textContent = cart.length;
+
+}
+
+updateCartCount();
+
+
+/* QUANTITY */
+
+let quantity = 1;
+
+
+function changeQuantity(change){
+
+    quantity += change;
+
+    if(quantity < 1){
+        quantity = 1;
+    }
+
+    if(quantity > 10){
+        quantity = 10;
+    }
+
+    document.getElementById("quantity")
+        .textContent = quantity;
+
+}
+
+
+/* COLOR */
+
+let selectedColor = "Pastel";
+
+
+function selectColor(button){
+
+    document
+        .querySelectorAll(".color")
+        .forEach(btn =>
+            btn.classList.remove("selected")
+        );
+
+    button.classList.add("selected");
+
+    selectedColor =
+        button.textContent.trim();
+
+}
+
+
+/* ADD TO CART */
+
+function addToCart(){
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem("petalCart")
+        ) || [];
+
+
+    const customMessage =
+        document.getElementById("customMessage")
+        .value.trim();
+
+
+    for(let i = 0; i < quantity; i++){
+
+        cart.push({
+
+            name:product.name,
+
+            price:product.price,
+
+            image:product.image,
+
+            color:selectedColor,
+
+            message:customMessage
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "petalCart",
+        JSON.stringify(cart)
+    );
+
+
+    updateCartCount();
+
+
+    const success =
+        document.getElementById("successMessage");
+
+
+    success.style.display = "block";
+
+
+    setTimeout(() => {
+
+        success.style.display = "none";
+
+    },3000);
+
+}
+
+</script>
+
+</body>
+</html>
