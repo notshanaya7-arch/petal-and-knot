@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | Petal & Knot</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fffaf8;
+    color:#574247;
+    font-family:"DM Sans",sans-serif;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* NAV */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,250,248,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #f0dddd;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    font-weight:700;
+    color:#965e6a;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#c27684;
+}
+
+.cart{
+    background:#a76673;
+    color:white;
+    padding:11px 19px;
+    border-radius:30px;
+    font-size:13px;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:75px 7% 55px;
+    background:
+        radial-gradient(circle at 15% 30%,#f7e0e4,transparent 25%),
+        radial-gradient(circle at 85% 70%,#eee3f2,transparent 25%);
+}
+
+.small{
+    text-transform:uppercase;
+    letter-spacing:4px;
+    color:#ad6b77;
+    font-size:11px;
+    margin-bottom:15px;
+}
+
+.header h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:68px;
+    color:#503d42;
+}
+
+/* CHECKOUT */
+
+.checkout-area{
+    max-width:1150px;
+    margin:auto;
+    padding:60px 7% 100px;
+}
+
+.checkout-layout{
+    display:grid;
+    grid-template-columns:1.4fr .8fr;
+    gap:40px;
+}
+
+.form-card,
+.order-card{
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:22px;
+    padding:30px;
+}
+
+.form-card h2,
+.order-card h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
+    margin-bottom:25px;
+    color:#503d42;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1 / -1;
+}
+
+label{
+    font-size:12px;
+    font-weight:600;
+    color:#70595e;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    border:1px solid #e4cccc;
+    border-radius:12px;
+    padding:13px;
+    font-family:inherit;
+    font-size:13px;
+    color:#574247;
+    background:#fffaf8;
+    outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#b87582;
+    background:white;
+}
+
+textarea{
+    min-height:105px;
+    resize:vertical;
+}
+
+.required{
+    color:#a76673;
+}
+
+/* ORDER */
+
+.order-card{
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.order-item{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:13px 0;
+    border-bottom:1px solid #f0e2df;
+    font-size:13px;
+}
+
+.order-item-name{
+    color:#695258;
+}
+
+.order-item-price{
+    font-weight:600;
+    color:#a76673;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:17px;
+    font-size:14px;
+    color:#765f64;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    border-top:1px solid #ead8d7;
+    padding-top:20px;
+    margin-top:20px;
+    font-size:21px;
+    font-weight:600;
+    color:#503d42;
+}
+
+.place-order{
+    width:100%;
+    border:none;
+    background:#a76673;
+    color:white;
+    padding:16px;
+    border-radius:30px;
+    margin-top:25px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:14px;
+    transition:.3s;
+}
+
+.place-order:hover{
+    background:#8f5662;
+    transform:translateY(-2px);
+}
+
+.secure{
+    text-align:center;
+    font-size:11px;
+    color:#917b7f;
+    margin-top:15px;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:80px 20px;
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:22px;
+}
+
+.empty h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.empty p{
+    color:#80696d;
+    margin-bottom:25px;
+}
+
+.shop-button{
+    display:inline-block;
+    background:#a76673;
+    color:white;
+    padding:13px 23px;
+    border-radius:30px;
+}
+
+/* SUCCESS */
+
+.success{
+    display:none;
+    text-align:center;
+    max-width:650px;
+    margin:auto;
+    padding:65px 30px;
+    background:white;
+    border:1px solid #f0dedb;
+    border-radius:25px;
+}
+
+.success-icon{
+    font-size:45px;
+    color:#a76673;
+    margin-bottom:15px;
+}
+
+.success h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:48px;
+    color:#503d42;
+    margin-bottom:15px;
+}
+
+.success p{
+    color:#80696d;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.order-number{
+    display:inline-block;
+    background:#f8e9e9;
+    color:#965e6a;
+    padding:10px 18px;
+    border-radius:20px;
+    margin:20px 0;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+    background:#503d42;
+    color:white;
+    padding:60px 7% 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:50px;
+    margin-bottom:40px;
+}
+
+footer h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#ddc9ca;
+    font-size:13px;
+    line-height:2;
+}
+
+footer a:hover{
+    color:white;
+}
+
+.bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:20px;
+    text-align:center;
+    color:#cdb8bb;
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .checkout-layout{
+        grid-template-columns:1fr;
+    }
+
+    .order-card{
+        position:static;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .header h1{
+        font-size:52px;
+    }
+
+    .checkout-area{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        Petal & Knot
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="shop.html">Shop</a>
+        </li>
+
+        <li>
+            <a href="bouquet.html">Build a Bouquet</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+    </ul>
+
+    <a href="cart.html" class="cart">
+        Cart (<span id="cartCount">0</span>)
+    </a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="small">
+        Almost yours
+    </div>
+
+    <h1>
+        Checkout
+    </h1>
+
+</header>
+
+
+<!-- CHECKOUT -->
+
+<main class="checkout-area">
+
+    <div id="checkoutContent">
+
+        <div class="checkout-layout">
+
+
+            <!-- CUSTOMER FORM -->
+
+            <section class="form-card">
+
+                <h2>
+                    Where should we send it?
+                </h2>
+
+                <form id="orderForm">
+
+                    <div class="form-grid">
+
+
+                        <div class="field">
+
+                            <label>
+                                First name <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="firstName"
+                            required
+                            placeholder="Your first name">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Last name <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="lastName"
+                            required
+                            placeholder="Your last name">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Phone number <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="tel"
+                            id="phone"
+                            required
+                            placeholder="+91 98765 43210">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Email
+                            </label>
+
+                            <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com">
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label>
+                                Address <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="address"
+                            required
+                            placeholder="House number, street, area">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                City <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="city"
+                            required
+                            placeholder="Your city">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                State <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="state"
+                            required
+                            placeholder="Your state">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Pincode <span class="required">*</span>
+                            </label>
+
+                            <input
+                            type="text"
+                            id="pincode"
+                            required
+                            placeholder="000000">
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>
+                                Payment preference
+                            </label>
+
+                            <select id="payment">
+
+                                <option value="cod">
+                                    Cash on Delivery
+                                </option>
+
+                                <option value="online">
+                                    Online Payment
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label>
+                                Message for the owner
+                            </label>
+
+                            <textarea
+                            id="message"
+                            placeholder="Any colour changes, customisation requests, gift messages or special instructions?"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <aside class="order-card">
+
+                <h2>
+                    Your order
+                </h2>
+
+                <div id="orderItems"></div>
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span id="subtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <span id="delivery">
+                        ₹49
+                    </span>
+
+                </div>
+
+
+                <div class="total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span id="total">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+                <button
+                class="place-order"
+                onclick="placeOrder()">
+
+                    Place Order
+
+                </button>
+
+
+                <div class="secure">
+                    Your details are used only to process your order.
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUCCESS MESSAGE -->
+
+    <div class="success" id="success">
+
+        <div class="success-icon">
+            ♡
+        </div>
+
+        <h2>
+            Order received!
+        </h2>
+
+        <p>
+            Thank you for supporting handmade.
+            Your order has been prepared for the maker.
+        </p>
+
+        <div class="order-number" id="orderNumber">
+            Order #PK0000
+        </div>
+
+        <p>
+            We'll use the contact details you provided
+            to confirm the order.
+        </p>
+
+        <br>
+
+        <a href="shop.html" class="shop-button">
+            Continue shopping
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>
+                Petal & Knot
+            </h3>
+
+            <p>
+                Handmade crochet flowers, tiny keepsakes
+                and thoughtful gifts made with care.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                <a href="index.html">Home</a>
+            </p>
+
+            <p>
+                <a href="shop.html">Shop</a>
+            </p>
+
+            <p>
+                <a href="bouquet.html">Build a Bouquet</a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Say hello
+            </h3>
+
+            <p>
+                Instagram: @petalandknot.co
+            </p>
+
+            <p>
+                hello@petalandknot.demo
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        © 2026 Petal & Knot · Handmade with care.
+    </div>
+
+</footer>
+
+
+<script>
+
+let cart =
+    JSON.parse(localStorage.getItem("petalCart")) || [];
+
+
+/* CART COUNT */
+
+document.getElementById("cartCount").textContent =
+    cart.length;
+
+
+/* SHOW ORDER */
+
+function loadOrder(){
+
+    const orderItems =
+        document.getElementById("orderItems");
+
+    if(cart.length === 0){
+
+        document.getElementById("checkoutContent").innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Your cart is empty.
+                </h2>
+
+                <p>
+                    Add something lovely before checking out.
+                </p>
+
+                <a href="shop.html" class="shop-button">
+                    Browse the shop
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    let subtotal = 0;
+
+    let html = "";
+
+
+    cart.forEach(item => {
+
+        subtotal += item.price;
+
+        html += `
+
+            <div class="order-item">
+
+                <span class="order-item-name">
+                    ${item.name}
+                </span>
+
+                <span class="order-item-price">
+                    ₹${item.price}
+                </span>
+
+            </div>
+
+        `;
+
+    });
+
+
+    const delivery =
+        subtotal >= 999 ? 0 : 49;
+
+    const total =
+        subtotal + delivery;
+
+
+    orderItems.innerHTML = html;
+
+    document.getElementById("subtotal").textContent =
+        "₹" + subtotal;
+
+    document.getElementById("delivery").textContent =
+        delivery === 0 ? "FREE" : "₹" + delivery;
+
+    document.getElementById("total").textContent =
+        "₹" + total;
+
+
+    /* LOAD MESSAGE FROM CART */
+
+    const savedMessage =
+        localStorage.getItem("ownerMessage");
+
+    if(savedMessage){
+
+        document.getElementById("message").value =
+            savedMessage;
+
+    }
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder(){
+
+    const form =
+        document.getElementById("orderForm");
+
+
+    if(!form.checkValidity()){
+
+        form.reportValidity();
+
+        return;
+
+    }
+
+
+    const orderId =
+        "PK" +
+        Math.floor(1000 + Math.random() * 9000);
+
+
+    document.getElementById("orderNumber").textContent =
+        "Order #" + orderId;
+
+
+    /*
+        DEMO ORDER
+
+        The order is NOT being sent to a real store yet.
+        We'll connect a real order system later.
+    */
+
+
+    localStorage.setItem(
+        "lastOrder",
+        JSON.stringify({
+
+            orderId:orderId,
+
+            firstName:
+                document.getElementById("firstName").value,
+
+            lastName:
+                document.getElementById("lastName").value,
+
+            phone:
+                document.getElementById("phone").value,
+
+            email:
+                document.getElementById("email").value,
+
+            address:
+                document.getElementById("address").value,
+
+            city:
+                document.getElementById("city").value,
+
+            state:
+                document.getElementById("state").value,
+
+            pincode:
+                document.getElementById("pincode").value,
+
+            payment:
+                document.getElementById("payment").value,
+
+            message:
+                document.getElementById("message").value,
+
+            items:cart
+
+        })
+    );
+
+
+    /* CLEAR CART */
+
+    localStorage.removeItem("petalCart");
+
+    localStorage.removeItem("ownerMessage");
+
+
+    /* SHOW SUCCESS */
+
+    document.getElementById("checkoutContent").style.display =
+        "none";
+
+    document.getElementById("success").style.display =
+        "block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+loadOrder();
+
+</script>
+
+</body>
+</html>
